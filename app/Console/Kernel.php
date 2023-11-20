@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the commands for the application.
+     * Register.vue the commands for the application.
      */
     protected function commands(): void
     {
