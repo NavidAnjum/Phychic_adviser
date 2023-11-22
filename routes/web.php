@@ -14,26 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/{any}', [\App\Http\Controllers\SpaController::class ,'index'])->where('any', '.*');
 
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{
+//Route::group(['namespace' => 'App\Http\Controllers'], function()
+//{
     /**
      * Home Routes
      */
-    Route::get('/', [HomeController::class ,'index'])->name('home.index');
+    //Route::get('/', [HomeController::class ,'index'])->name('home.index');
 
-    Route::group(['middleware' => ['guest']], function() {
-        /**
-         * Register.vue Routes
-         */
-        Route::get('/register', 'RegisterController@show')->name('register.show');
+//    Route::group(['middleware' => ['guest']], function() {
+//        /**
+//         * Register.vue Routes
+//         */
+//        Route::get('/register', 'RegisterController@show')->name('register.show');
+//
+//        /**
+//         * Login Routes
+//         */
+//        Route::get('/login', 'LoginController@show')->name('login.show');
+//
+//    });
 
-        /**
-         * Login Routes
-         */
-        Route::get('/login', 'LoginController@show')->name('login.show');
 
-    });
-
-
-});
+//});

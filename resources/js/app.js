@@ -1,9 +1,8 @@
 import './bootstrap';
-// app.js
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import { createApp } from 'vue'
-
-import Register from './Auth/Register.vue';
-import Login from './Auth/Login.vue';
-
-createApp(Register).mount("#app")
+const app = createApp(App);
+app.use(router);
+app.mount('#app');

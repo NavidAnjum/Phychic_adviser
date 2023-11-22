@@ -73,12 +73,15 @@ class ApiAuth extends Controller
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
+// Accessing the role_id
+        $role_id = $user->roles->first()->id; // Assuming a user can have multiple roles, get the first one
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'message' => 'Success!',
             'data'    => [
+                'role_id' => $role_id,
                 'access_token' => $token,
                 'token_type'   => 'Bearer',
             ],
