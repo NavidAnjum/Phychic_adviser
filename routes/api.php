@@ -20,20 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 include 'auth.php';
 
-
-Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');    //showing_Products_deatails
-
-Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
-
-//for subcategory productShowing
-Route::get('/products/{id}', 'ProductController@productsView');
-//---------Order Tracking----------
-Route::post('order/tracking', 'FrontController@OrderTracking')->name('order.tracking');
-//---------UserOrderView-----------
-Route::get('user/view/order/{id}', 'FrontController@UserOrderView');
-//----------Search-----------
-Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
+Route::resource('product', \App\Http\Controllers\ProductController::class)
+    ->middleware(['auth:sanctum'])->except('index');
 
 
 
-
+Route::resource('order', \App\Http\Controllers\OrderController::class)
+    ->middleware(['auth:sanctum'])->except('index');

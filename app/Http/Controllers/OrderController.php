@@ -7,59 +7,42 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $orders = Order::all();
+        return response()->json(['orders' => $orders], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        // Add code for showing the create form
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $order = Order::create($request->all());
+        return response()->json(['message' => 'Order created successfully', 'order' => $order], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Order $order)
     {
-        //
+        return response()->json(['order' => $order], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Order $order)
     {
-        //
+        return response()->json(['order' => $order], 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->update($request->all());
+        return response()->json(['message' => 'Order updated successfully', 'order' => $order], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return response()->json(['message' => 'Order deleted successfully'], 200);
     }
 }
